@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Path Builder</title>
+</h:head>
+
+<h:body style="background-color: #3E94E1; margin: 0 auto; width: 850px">
+	<h:form>
+		<p:panel id="chartSection"
+			style="border: 2px solid #000000; border-radius: 5px 5px;">
+			<p:commandButton value="Clear" update="chartSection,output,edges"
+				actionListener="#{sessionBean.buildPath}" icon="ui-icon-close" />
+			<p:commandButton value="Home" action="#{sessionBean.goHome}"
+				icon="ui-icon-home" />
+			<p:panel id="output"
+				style="border: 1px solid #222222; margin-top: 8px;">
+				<p:outputLabel>Selected edge:</p:outputLabel>
+				<p:separator />
+				<h:panelGrid columns="6" cellpadding="10">
+					<p:outputLabel value="Start:" style="font-style: italic" />
+					<p:outputLabel value="#{sessionBean.start}" />
+					<p:outputLabel value="Finish:" style="font-style: italic" />
+					<p:outputLabel value="#{sessionBean.finish}" />
+					<p:outputLabel value="Range:" style="font-style: italic" />
+					<p:outputLabel value="#{sessionBean.distance}" />
+				</h:panelGrid>
+			</p:panel>
+			<p:chart type="bar" model="#{sessionBean.path}"
+				style="height:200px; width: 95%;">
+				<p:ajax event="itemSelect" update="output"
+					listener="#{sessionBean.showDetails}" />
+			</p:chart>
+		</p:panel>
+
+		<p:contextMenu for="edges">
+			<p:menuitem value="Jump" icon="ui-icon-arrowreturnthick-1-e"
+				actionListener="#{sessionBean.addElement}"
+				update="edges,chartSection" />
+		</p:contextMenu>
+
+		<p:dataTable id="edges" var="edge" value="#{sessionBean.edges}"
+			rows="8" paginator="true"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+			rowKey="#{edge.id2}" selection="#{sessionBean.selectedDestination}"
+			selectionMode="single" style="text-align: center;">
+			<f:facet name="header">
+				<h:outputLabel> Location: </h:outputLabel>
+				<h:outputText id="currentVertexId"
+					value="#{sessionBean.currentVertexId}" />
+			</f:facet>
+			<p:column headerText="Destination">
+				<h:outputText value="#{edge.id2}" />
+			</p:column>
+			<p:column headerText="Distance">
+				<h:outputText value="#{edge.distance}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

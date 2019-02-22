@@ -1,0 +1,144 @@
+add vertex 1
+set 1 weight as 5.7
+add bridge 7.0 from 1 to 2
+add bridge 9.0 from 1 to 3
+add bridge 14.0 from 1 to 6
+
+add vertex 17
+
+add vertex 2
+add bridge 7.0 from 2 to 1
+add bridge 10.0 from 2 to 3
+add bridge 15.0 from 2 to 4
+
+add vertex 3
+add bridge 9.0 from 3 to 1
+add bridge 10.0 from 3 to 2
+add bridge 11.0 from 3 to 4
+add bridge 231231.0 from 3 to 5
+add bridge 2.0 from 3 to 6
+
+add vertex 4
+set 4 weight as 8.3
+add bridge 15.0 from 4 to 2
+add bridge 11.0 from 4 to 3
+add bridge 6.0 from 4 to 5
+
+add vertex 5
+set 5 weight as 14.5
+add bridge 6.0 from 5 to 4
+add bridge 9.0 from 5 to 6
+
+add vertex 6
+add bridge 14.0 from 6 to 1
+add bridge 2.0 from 6 to 3
+add bridge 9.0 from 6 to 5
+
+add vertex 1
+set 1 weight as 5.7
+add bridge 7.0 from 1 to 2
+add bridge 9.0 from 1 to 3
+add bridge 14.0 from 1 to 6
+
+add vertex 17
+
+add vertex 2
+add bridge 7.0 from 2 to 1
+add bridge 10.0 from 2 to 3
+add bridge 15.0 from 2 to 4
+
+add vertex 3
+add bridge 9.0 from 3 to 1
+add bridge 10.0 from 3 to 2
+add bridge 11.0 from 3 to 4
+add bridge 231231.0 from 3 to 5
+add bridge 2.0 from 3 to 6
+
+add vertex 4
+set 4 weight as 8.3
+add bridge 15.0 from 4 to 2
+add bridge 11.0 from 4 to 3
+add bridge 6.0 from 4 to 5
+
+add vertex 5
+set 5 weight as 14.5
+add bridge 6.0 from 5 to 4
+add bridge 9.0 from 5 to 6
+
+add vertex 6
+add bridge 14.0 from 6 to 1
+add bridge 2.0 from 6 to 3
+add bridge 9.0 from 6 to 5
+
+add vertex 1
+set 1 weight as 5.7
+add bridge 7.0 from 1 to 2
+add bridge 9.0 from 1 to 3
+add bridge 14.0 from 1 to 6
+
+add vertex 17
+
+add vertex 2
+add bridge 7.0 from 2 to 1
+add bridge 10.0 from 2 to 3
+add bridge 15.0 from 2 to 4
+
+add vertex 3
+add bridge 9.0 from 3 to 1
+add bridge 10.0 from 3 to 2
+add bridge 11.0 from 3 to 4
+add bridge 231231.0 from 3 to 5
+add bridge 2.0 from 3 to 6
+
+add vertex 4
+set 4 weight as 8.3
+add bridge 15.0 from 4 to 2
+add bridge 11.0 from 4 to 3
+add bridge 6.0 from 4 to 5
+
+add vertex 5
+set 5 weight as 14.5
+add bridge 6.0 from 5 to 4
+add bridge 9.0 from 5 to 6
+
+add vertex 6
+add bridge 14.0 from 6 to 1
+add bridge 2.0 from 6 to 3
+add bridge 9.0 from 6 to 5
+
+add vertex 1
+set 1 weight as 5.7
+add bridge 7.0 from 1 to 2
+add bridge 9.0 from 1 to 3
+add bridge 14.0 from 1 to 6
+
+add vertex 17
+
+add vertex 2
+add bridge 7.0 from 2 to 1
+add bridge 10.0 from 2 to 3
+add bridge 15.0 from 2 to 4
+
+add vertex 3
+add bridge 9.0 from 3 to 1
+add bridge 10.0 from 3 to 2
+add bridge 11.0 from 3 to 4
+add bridge 231231.0 from 3 to 5
+add bridge 2.0 from 3 to 6
+
+add vertex 4
+set 4 weight as 8.3
+add bridge 15.0 from 4 to 2
+add bridge 11.0 from 4 to 3
+add bridge 6.0 from 4 to 5
+
+add vertex 5
+set 5 weight as 14.5
+add bridge 6.0 from 5 to 4
+add bridge 9.0 from 5 to 6
+
+add vertex 6
+add bridge 14.0 from 6 to 1
+add bridge 2.0 from 6 to 3
+add bridge 9.0 from 6 to 5
+

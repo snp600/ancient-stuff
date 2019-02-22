@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Home</title>
+</h:head>
+
+<h:body style="background-color: #3E94E1; margin: 0 auto; width: 850px">
+	<h:panelGroup id="home">
+		<h:form>
+			<p:panel
+				style="border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; 
+				height: 32px; line-height: 0px; background: linear-gradient(#555, #111, #333, #777);
+				border: 2px solid #0033CC; width: 450px; float: right;">
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputLabel value="Welcome:" style="color: #DDDDDD" />
+					<h:outputLabel value="admin" style="color: #FFFFFF;"
+						rendered="#{sessionBean.isAdmin}" />
+					<h:outputLabel value="guest" style="color: #FFFFFF;"
+						rendered="#{!sessionBean.isAdmin}" />
+					<p:commandLink value="Login"
+						style="color: #FFFFFF; text-decoration: none; margin-left: 170px;  
+						font-family: Sans-Serif;"
+						onclick="PF('loginDialog').show();"
+						rendered="#{!sessionBean.isAdmin}" />
+					<p:commandLink value="Logout"
+						style="color: #FFFFFF; text-decoration: none;  
+						font-family: Sans-Serif; margin-left: 160px;"
+						actionListener="#{sessionBean.logout}" update="home"
+						rendered="#{sessionBean.isAdmin}" />
+				</h:panelGrid>
+			</p:panel>
+			<p:dialog header="Login" widgetVar="loginDialog" modal="true">
+				<p:panel id="login">
+					<p:messages for="login" showDetail="true" autoUpdate="true"
+						closable="true" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="username" value="Username:" />
+						<p:inputText id="username" value="#{sessionBean.username}"
+							style="width: 95%;" />
+						<p:outputLabel for="password" value="Password:" />
+						<p:password id="password" value="#{sessionBean.password}"
+							style="width: 95%;" />
+					</h:panelGrid>
+					<p:commandButton value="Log in" update="login,:home"
+						actionListener="#{sessionBean.login}" icon="ui-icon-check" />
+				</p:panel>
+			</p:dialog>
+			<br />
+			<br />
+			<br />
+			<br />
+			<p:tabView style="border: 2px solid #330099;">
+				<p:tab title="Add vertex" disabled="#{!sessionBean.isAdmin}">
+					<p:panel id="addVertexPanel">
+						<p:messages for="addVertexPanel" showDetail="true"
+							autoUpdate="true" closable="true" />
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="name1" value="Name:" />
+							<p:inputText id="name1" value="#{sessionBean.vertexIdToAdd}"
+								disabled="#{!sessionBean.isAdmin}" />
+							<p:message for="name1" display="icon" />
+							<p:outputLabel for="delay" value="Delay:" />
+							<p:inputText id="delay" value="#{sessionBean.vertexDelay}"
+								disabled="#{!sessionBean.isAdmin}" />
+							<p:message for="delay" display="icon" />
+						</h:panelGrid>
+						<p:separator />
+						<p:commandButton value="Add" update="addVertexPanel"
+							actionListener="#{sessionBean.addVertex}" icon="ui-icon-check"
+							disabled="#{!sessionBean.isAdmin}" />
+					</p:panel>
+				</p:tab>
+				<p:tab title="Delete vertex" disabled="#{!sessionBean.isAdmin}">
+					<p:panel id="deleteVertexPanel">
+						<p:messages for="deleteVertexPanel" showDetail="true"
+							autoUpdate="true" closable="true" />
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="name2" value="Name to delete:" />
+							<p:inputText id="name2" value="#{sessionBean.vertexIdToDelete}">
+							</p:inputText>
+							<p:message for="name2" display="icon" />
+						</h:panelGrid>
+						<p:separator />
+						<p:commandButton value="Delete" update="deleteVertexPanel"
+							actionListener="#{sessionBean.deleteVertex}" icon="ui-icon-close" />
+					</p:panel>
+				</p:tab>
+				<p:tab title="Add edge" disabled="#{!sessionBean.isAdmin}">
+					<p:panel id="addEdgePanel">
+						<p:messages for="addEdgePanel" showDetail="true" autoUpdate="true"
+							closable="true" />
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="startAdd" value="Start:" />
+							<p:inputText id="startAdd" value="#{sessionBean.startAdd}">
+							</p:inputText>
+							<p:message for="startAdd" display="icon" />
+							<p:outputLabel for="finishAdd" value="Finish:" />
+							<p:inputText id="finishAdd" value="#{sessionBean.finishAdd}">
+							</p:inputText>
+							<p:message for="finishAdd" display="icon" />
+							<p:outputLabel for="range" value="Delay:" />
+							<p:inputText id="range" value="#{sessionBean.range}">
+							</p:inputText>
+							<p:message for="range" display="icon" />
+						</h:panelGrid>
+						<p:separator />
+						<p:commandButton value="Add" update="addEdgePanel"
+							actionListener="#{sessionBean.addEdge}" icon="ui-icon-check" />
+					</p:panel>
+				</p:tab>
+				<p:tab title="Delete edge" disabled="#{!sessionBean.isAdmin}">
+					<p:panel id="deleteEdgePanel">
+						<p:messages for="deleteEdgePanel" showDetail="true"
+							autoUpdate="true" closable="true" />
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="startDel" value="Start:" />
+							<p:inputText id="startDel" value="#{sessionBean.startDelete}">
+							</p:inputText>
+							<p:message for="startDel" display="icon" />
+							<p:outputLabel for="finishDel" value="Finish:" />
+							<p:inputText id="finishDel" value="#{sessionBean.finishDelete}">
+							</p:inputText>
+							<p:message for="finishDel" display="icon" />
+						</h:panelGrid>
+						<p:separator />
+						<p:commandButton value="Delete" update="deleteEdgePanel"
+							actionListener="#{sessionBean.deleteEdge}" icon="ui-icon-close" />
+					</p:panel>
+				</p:tab>
+			</p:tabView>
+			<p:contextMenu for="data">
+				<p:menuitem value="Build Path" icon="ui-icon-arrowreturnthick-1-w"
+					action="#{sessionBean.buildPath}">
+				</p:menuitem>
+			</p:contextMenu>
+			<br />
+			<p:dataTable id="data" var="vertex" value="#{dataExporter.vertices}"
+				rows="10" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+				rowKey="#{vertex.id}" selection="#{sessionBean.selectedVertex}"
+				selectionMode="single"
+				style="border: 2px solid #330099; border-radius: 5px 5px; text-align: center;">
+				<f:facet name="header">
+					<h:outputLabel> Vertices </h:outputLabel>
+					<p:commandButton value="Refresh"
+						style="float:right; border: 2px solid #330099; border-radius: 5px 5px;"
+						icon="ui-icon-refresh" update="data" />
+				</f:facet>
+				<p:column headerText="ID">
+					<h:outputText value="#{vertex.id}" />
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{vertex.name}" />
+				</p:column>
+				<p:column headerText="Delay">
+					<h:outputText value="#{vertex.delay}" />
+				</p:column>
+			</p:dataTable>
+			<br></br>
+			<p:accordionPanel id="dijkstra"
+				style="border: 2px solid #330099; border-radius: 5px 5px;">
+				<p:tab title="Dijkstra">
+					<h:panelGrid columns="6" cellpadding="10">
+						<p:outputLabel value="Start:" style="font-style: italic" />
+						<p:inputText value="#{sessionBean.dijkstraStart}" />
+						<p:outputLabel value="Finish:" style="font-style: italic" />
+						<p:inputText value="#{sessionBean.dijkstraDestination}" />
+						<p:commandButton value="submit" update="dijkstra"
+							actionListener="#{sessionBean.renderPath}" icon="ui-icon-check"
+							style="border: 2px solid #330099; border-radius: 5px 5px;" />
+					</h:panelGrid>
+					<p:panel id="outputDijkstra" style="border: 1px solid #222222">
+						<p:outputLabel>Selected edge's info:</p:outputLabel>
+						<p:separator />
+						<h:panelGrid columns="6" cellpadding="10">
+							<p:outputLabel value="Start:" style="font-style: italic" />
+							<p:outputLabel value="#{sessionBean.startInfo}" />
+							<p:outputLabel value="Finish:" style="font-style: italic" />
+							<p:outputLabel value="#{sessionBean.finishInfo}" />
+							<p:outputLabel value="Distance:" style="font-style: italic" />
+							<p:outputLabel value="#{sessionBean.distanceInfo}" />
+						</h:panelGrid>
+					</p:panel>
+					<p:chart type="bar" model="#{sessionBean.renderedPath}"
+						style="height:200px">
+						<p:ajax event="itemSelect" update="outputDijkstra"
+							listener="#{sessionBean.showInfo}" />
+					</p:chart>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+	</h:panelGroup>
+</h:body>
+</html>
+

@@ -1,0 +1,30 @@
+.tooltip {
+     -fx-background-color:bisque;
+     -fx-text-fill: black;
+}
+.button {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#E0FFFF, #48D1CC);
+}
+
+.text-field {
+    -fx-font-weight: bold;
+}
+.button:hover {
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(#48D1CC, #E0FFFF);
+}
+
+.label {
+    -fx-font-family: Courier New;
+    -fx-text-fill: Black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+#actiontarget {
+  -fx-fill: FIREBRICK;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
